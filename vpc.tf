@@ -103,17 +103,17 @@ resource "aws_route_table" "route_table_igw" {
 
 resource "aws_route_table_association" "igw-routable_subnet-1" {
   subnet_id = aws_subnet.routable_subnet-1.id
-  route_table_id = aws_route_table.route_table_igw
+  route_table_id = aws_route_table.route_table_igw.id
 }
 
 resource "aws_route_table_association" "igw-routable_subnet-2" {
   subnet_id = aws_subnet.routable_subnet-2.id
-  route_table_id = aws_route_table.route_table_igw
+  route_table_id = aws_route_table.route_table_igw.id
 }
 
 resource "aws_route_table_association" "igw-routable_subnet-3" {
   subnet_id = aws_subnet.routable_subnet-3.id
-  route_table_id = aws_route_table.route_table_igw
+  route_table_id = aws_route_table.route_table_igw.id
 }
 
 ## elastic ip for nat gateway
