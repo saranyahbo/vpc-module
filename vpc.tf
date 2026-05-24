@@ -135,7 +135,7 @@ resource "aws_nat_gateway" "nat_gateway" {
 ## rouate table for private subnets
 
 resource "aws_route_table" "non-routable-subnet-route-1" {
-    vpc_id = aws_vpc.eks_vpc
+    vpc_id = aws_vpc.eks_vpc.id
     route = {
         cidr_block = var.non-routable_cidr-route
         nat_gateway = aws_nat_gateway.nat_gateway.id
@@ -146,7 +146,7 @@ resource "aws_route_table" "non-routable-subnet-route-1" {
 }
 
 resource "aws_route_table" "non-routable-subnet-route-2" {
-    vpc_id = aws_vpc.eks_vpc
+    vpc_id = aws_vpc.eks_vpc.id
     route = {
         cidr_block = var.non-routable_cidr-route
         nat_gateway = aws_nat_gateway.nat_gateway.id
@@ -157,7 +157,7 @@ resource "aws_route_table" "non-routable-subnet-route-2" {
 }
 
 resource "aws_route_table" "non-routable-subnet-route-3" {
-    vpc_id = aws_vpc.eks_vpc
+    vpc_id = aws_vpc.eks_vpc.id
     route = {
         cidr_block = var.non-routable_cidr-route
         nat_gateway = aws_nat_gateway.nat_gateway.id
