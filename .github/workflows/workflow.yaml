@@ -3,6 +3,10 @@ name: vpc-deployment
 on:
   push:
     branches: [feature-deploy-vpc]
+
+env:
+  FORCE_JAVASCRIPT_ACTIONS_TO_NODE24: true
+
 jobs:
 
   build:
