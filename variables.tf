@@ -21,7 +21,7 @@ variable "enable_dns_support" {
 variable "enable_network_address_usage_metrics" {
   type        = bool
   description = "enable_network_address_usage_metrics boolean value"
-  default     = ture
+  default     = true
 }
 
 variable "routable_subnet-1" {
