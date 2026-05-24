@@ -91,7 +91,7 @@ resource "aws_internet_gateway" "igw1" {
 
 resource "aws_route_table" "route_table_igw" {
     vpc_id = aws_vpc.eks_vpc.id
-    route = {
+    route {
         cidr_block = var.igw_routable_cidr_id
         gateway_id = aws_internet_gateway.igw1.id
     }
@@ -136,9 +136,9 @@ resource "aws_nat_gateway" "nat_gateway" {
 
 resource "aws_route_table" "non-routable-subnet-route-1" {
     vpc_id = aws_vpc.eks_vpc.id
-    route = {
+    route {
         cidr_block = var.non-routable_cidr-route
-        nat_gateway = aws_nat_gateway.nat_gateway.id
+        gateway_id = aws_nat_gateway.nat_gateway.id
     }
     tags ={
         "name" = "non-routable-subnet-1"
@@ -147,9 +147,9 @@ resource "aws_route_table" "non-routable-subnet-route-1" {
 
 resource "aws_route_table" "non-routable-subnet-route-2" {
     vpc_id = aws_vpc.eks_vpc.id
-    route = {
+    route {
         cidr_block = var.non-routable_cidr-route
-        nat_gateway = aws_nat_gateway.nat_gateway.id
+        gateway_id = aws_nat_gateway.nat_gateway.id
     }
     tags ={
         "name" = "non-routable-subnet-2"
@@ -158,9 +158,9 @@ resource "aws_route_table" "non-routable-subnet-route-2" {
 
 resource "aws_route_table" "non-routable-subnet-route-3" {
     vpc_id = aws_vpc.eks_vpc.id
-    route = {
+    route {
         cidr_block = var.non-routable_cidr-route
-        nat_gateway = aws_nat_gateway.nat_gateway.id
+        gateway_id = aws_nat_gateway.nat_gateway.id
     }
     tags ={
         "name" = "non-routable-subnet-3"
