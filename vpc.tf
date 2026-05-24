@@ -19,7 +19,7 @@ resource "aws_vpc" "eks_vpc" {
 resource "aws_subnet" "routable_subnet-1" {
     availability_zone = data.aws_availability_zones.available_zones.names[0]
     cidr_block = var.routable_subnet-1
-    vpc_id = aws_vpc.eks_vpc
+    vpc_id = aws_vpc.eks_vpc.id
     tags={
         "name"= "routable_subnet-1"
     }
@@ -28,7 +28,7 @@ resource "aws_subnet" "routable_subnet-1" {
 resource "aws_subnet" "routable_subnet-2" {
     availability_zone = data.aws_availability_zones.available_zones.names[1]
     cidr_block = var.routable_subnet-2
-    vpc_id = aws_vpc.eks_vpc
+    vpc_id = aws_vpc.eks_vpc.id
     tags={
         "name"= "routable_subnet-2"
     }
@@ -37,7 +37,7 @@ resource "aws_subnet" "routable_subnet-2" {
 resource "aws_subnet" "routable_subnet-3" {
     availability_zone = data.aws_availability_zones.available_zones.names[2]
     cidr_block = var.routable_subnet-3
-    vpc_id = aws_vpc.eks_vpc
+    vpc_id = aws_vpc.eks_vpc.id
     tags={
         "name"= "routable_subnet-3"
     }
@@ -50,7 +50,7 @@ resource "aws_subnet" "routable_subnet-3" {
 resource "aws_subnet" "non-routable_subnet-1" {
     availability_zone = data.aws_availability_zones.available_zones.names[3]
     cidr_block = var.non-routable_subnet-1
-    vpc_id = aws_vpc.eks_vpc
+    vpc_id = aws_vpc.eks_vpc.id
     tags={
         "name"= "non-routable_subnet-1"
     }
@@ -59,7 +59,7 @@ resource "aws_subnet" "non-routable_subnet-1" {
 resource "aws_subnet" "non-routable_subnet-2" {
     availability_zone = data.aws_availability_zones.available_zones.names[4]
     cidr_block = var.non-routable_subnet-2
-    vpc_id = aws_vpc.eks_vpc
+    vpc_id = aws_vpc.eks_vpc.id
     tags={
         "name"= "non-routable_subnet-2"
     }
@@ -68,7 +68,7 @@ resource "aws_subnet" "non-routable_subnet-2" {
 resource "aws_subnet" "non-routable_subnet-3" {
     availability_zone = data.aws_availability_zones.available_zones.names[5]
     cidr_block = var.non-routable_subnet-3
-    vpc_id = aws_vpc.eks_vpc
+    vpc_id = aws_vpc.eks_vpc.id
     tags={
         "name"= "non-routable_subnet-3"
     }
@@ -90,7 +90,7 @@ resource "aws_internet_gateway" "igw1" {
 ############################
 
 resource "aws_route_table" "route_table_igw" {
-    vpc_id = aws_vpc.eks_vpc
+    vpc_id = aws_vpc.eks_vpc.id
     route = {
         cidr_block = var.igw_routable_cidr_id
         gateway_id = aws_internet_gateway.igw1.id

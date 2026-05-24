@@ -25,11 +25,7 @@ jobs:
       uses: hashicorp/setup-terraform@v3
 
     - name: Terraform init and plan
-      env: 
-          environment_file_name: dev
       run: |
             terraform init 
-            terraform plan -var-file=dev.tfvars
-            
-    - name: Terraform Planner
-      run: terraform plan -var-file={environment_file_name}.tfvars
+            terraform validate
+            terraform plan
