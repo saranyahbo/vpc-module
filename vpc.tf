@@ -12,9 +12,9 @@ resource "aws_vpc" "eks_vpc" {
     }
 }
 
-############
+######################
 # public subnets creation
-############
+######################
 
 resource "aws_subnet" "routable_subnet-1" {
     availability_zone = data.aws_availability_zones.available_zones.names[0]
