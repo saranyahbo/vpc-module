@@ -17,6 +17,7 @@ resource "aws_vpc" "eks_vpc" {
 ######################
 
 resource "aws_subnet" "routable_subnet-1" {
+    name= "routable_subnet-1"
     availability_zone = data.aws_availability_zones.available_zones.names[0]
     cidr_block = var.routable_subnet-1
     vpc_id = aws_vpc.eks_vpc.id
