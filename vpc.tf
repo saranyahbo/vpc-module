@@ -8,7 +8,7 @@ resource "aws_vpc" "eks_vpc" {
     enable_dns_support = var.enable_dns_support
     enable_network_address_usage_metrics = var.enable_network_address_usage_metrics
     tags = {
-        "name"="eks-vpc"
+        "Name"="eks-vpc"
     }
 }
 
@@ -22,7 +22,7 @@ resource "aws_subnet" "routable_subnet-1" {
     vpc_id = aws_vpc.eks_vpc.id
     map_public_ip_on_launch = true
     tags={
-        "name"= "routable_subnet-1"
+        "Name"= "routable_subnet-1"
     }
 }
 
@@ -32,7 +32,7 @@ resource "aws_subnet" "routable_subnet-2" {
     vpc_id = aws_vpc.eks_vpc.id
     map_public_ip_on_launch = true
     tags={
-        "name"= "routable_subnet-2"
+        "Name"= "routable_subnet-2"
     }
 }
 
@@ -42,7 +42,7 @@ resource "aws_subnet" "routable_subnet-3" {
     vpc_id = aws_vpc.eks_vpc.id
     map_public_ip_on_launch = true
     tags={
-        "name"= "routable_subnet-3"
+        "Name"= "routable_subnet-3"
     }
 }
 
@@ -55,7 +55,7 @@ resource "aws_subnet" "non-routable_subnet-1" {
     cidr_block = var.non-routable_subnet-1
     vpc_id = aws_vpc.eks_vpc.id
     tags={
-        "name"= "non-routable_subnet-1"
+        "Name"= "non-routable_subnet-1"
     }
 }
 
@@ -64,7 +64,7 @@ resource "aws_subnet" "non-routable_subnet-2" {
     cidr_block = var.non-routable_subnet-2
     vpc_id = aws_vpc.eks_vpc.id
     tags={
-        "name"= "non-routable_subnet-2"
+        "Name"= "non-routable_subnet-2"
     }
 }
 
@@ -73,7 +73,7 @@ resource "aws_subnet" "non-routable_subnet-3" {
     cidr_block = var.non-routable_subnet-3
     vpc_id = aws_vpc.eks_vpc.id
     tags={
-        "name"= "non-routable_subnet-3"
+        "Name"= "non-routable_subnet-3"
     }
 }
 
@@ -84,7 +84,7 @@ resource "aws_subnet" "non-routable_subnet-3" {
 resource "aws_internet_gateway" "igw1" {
     vpc_id = aws_vpc.eks_vpc.id
     tags = {
-        "name"= "internet-gateway"
+        "Name"= "internet-gateway"
     }
 }
 
@@ -131,7 +131,7 @@ resource "aws_nat_gateway" "nat_gateway" {
     subnet_id = aws_subnet.routable_subnet-1.id
     allocation_id = aws_eip.elastic_ip.id
     tags = {
-        "name" = "nat-gateway"
+        "Name" = "nat-gateway"
     }
 }
 
@@ -144,7 +144,7 @@ resource "aws_route_table" "non-routable-subnet-route-1" {
         gateway_id = aws_nat_gateway.nat_gateway.id
     }
     tags ={
-        "name" = "non-routable-subnet-1"
+        "Name" = "non-routable-subnet-1"
     }
 }
 
@@ -155,7 +155,7 @@ resource "aws_route_table" "non-routable-subnet-route-2" {
         gateway_id = aws_nat_gateway.nat_gateway.id
     }
     tags ={
-        "name" = "non-routable-subnet-2"
+        "Name" = "non-routable-subnet-2"
     }
 }
 
@@ -166,7 +166,7 @@ resource "aws_route_table" "non-routable-subnet-route-3" {
         gateway_id = aws_nat_gateway.nat_gateway.id
     }
     tags ={
-        "name" = "non-routable-subnet-3"
+        "Name" = "non-routable-subnet-3"
     }
 }
 
