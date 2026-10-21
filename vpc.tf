@@ -17,10 +17,10 @@ resource "aws_vpc" "eks_vpc" {
 ######################
 
 resource "aws_subnet" "routable_subnet-1" {
-    name= "routable_subnet-1"
     availability_zone = data.aws_availability_zones.available_zones.names[0]
     cidr_block = var.routable_subnet-1
     vpc_id = aws_vpc.eks_vpc.id
+    map_public_ip_on_launch = true
     tags={
         "name"= "routable_subnet-1"
     }
@@ -30,6 +30,7 @@ resource "aws_subnet" "routable_subnet-2" {
     availability_zone = data.aws_availability_zones.available_zones.names[1]
     cidr_block = var.routable_subnet-2
     vpc_id = aws_vpc.eks_vpc.id
+    map_public_ip_on_launch = true
     tags={
         "name"= "routable_subnet-2"
     }
@@ -39,6 +40,7 @@ resource "aws_subnet" "routable_subnet-3" {
     availability_zone = data.aws_availability_zones.available_zones.names[2]
     cidr_block = var.routable_subnet-3
     vpc_id = aws_vpc.eks_vpc.id
+    map_public_ip_on_launch = true
     tags={
         "name"= "routable_subnet-3"
     }
